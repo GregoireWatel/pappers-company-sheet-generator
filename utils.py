@@ -1,5 +1,4 @@
 import streamlit as st
-import openai
 
 def set_sidebar():
     for i in range(28): st.sidebar.text('')
