@@ -51,21 +51,6 @@ if run:
         three_lastest_exercices.sort(reverse=True)
         three_lastest_exercices = three_lastest_exercices[:3]
 
-        distribution_of_dividends = {
-            'year_1': three_lastest_exercices[0],
-            'net_income_1': str([el['chiffre_affaires'] for el in data['finances'] if el['annee'] == three_lastest_exercices[0]][0]),
-            'dividents_1': '',
-            'distribution_date_1': '',
-            'year_2': three_lastest_exercices[1],
-            'net_income_2': str([el['chiffre_affaires'] for el in data['finances'] if el['annee'] == three_lastest_exercices[1]][0]),
-            'dividents_2': '',
-            'distribution_date_2': '',
-            'year_3': three_lastest_exercices[2],
-            'net_income_3': str([el['chiffre_affaires'] for el in data['finances'] if el['annee'] == three_lastest_exercices[2]][0]),
-            'dividents_3': '',
-            'distribution_date_3': ''
-        }
-
         # Create fiscal year
         locale.setlocale(locale.LC_TIME, "fr_FR")
         end_date = datetime.datetime.strptime(data['date_cloture_exercice'], "%d %B").strftime("%d %B")
