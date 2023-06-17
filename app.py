@@ -103,8 +103,10 @@ if run:
         # Create statutory auditors
         if data['representants'] != None:
             if len([f"{el['nom_complet']} ({el['qualite']})" for el in data['representants'] if 'Commissaire aux comptes' in el['qualite'] and 'siren' in el.keys()]) > 0:
-                statutory_auditors_principals = " ".join([f"{el['nom_complet']} ({el['siren']})" for el in data['representants'] if 'Commissaire aux comptes titulaire' in el['qualite']])
-                statutory_auditors_alternates = " ".join([f"{el['nom_complet']} ({el['siren']})" for el in data['representants'] if el['qualite'] == 'Commissaire aux comptes suppléant'])
+                statutory_auditors_principals = " ".join([f"{el['nom_complet']} ({el['siren']})" for el in data['representants'] if 'Commissaire aux comptes titulaire' in el['qualite'] and 'siren' in el.keys()]
+                                                         + [f"{el['nom_complet']}" for el in data['representants'] if 'Commissaire aux comptes titulaire' in el['qualite'] and 'siren' not in el.keys()])
+                statutory_auditors_alternates = " ".join([f"{el['nom_complet']} ({el['siren']})" for el in data['representants'] if el['qualite'] == 'Commissaire aux comptes suppléant' and 'siren' in el.keys()]
+                                                         + [f"{el['nom_complet']}" for el in data['representants'] if el['qualite'] == 'Commissaire aux comptes suppléant' and 'siren' not in el.keys()])
             elif len([f"{el['nom_complet']} ({el['qualite']})" for el in data['representants'] if 'Commissaire aux comptes' in el['qualite']]) > 0:
                 statutory_auditors_principals = " ".join([f"{el['nom_complet']}" for el in data['representants'] if 'Commissaire aux comptes titulaire' in el['qualite']])
                 statutory_auditors_alternates = " ".join([f"{el['nom_complet']}" for el in data['representants'] if el['qualite'] == 'Commissaire aux comptes suppléant'])
