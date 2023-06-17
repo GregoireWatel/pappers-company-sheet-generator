@@ -102,7 +102,7 @@ if run:
 
         # Create statutory auditors
         if data['representants'] != None:
-            if len([f"{el['nom_complet']} ({el['qualite']})" for el in data['representants'] if 'Commissaire aux comptes' in el['qualite'] and el['representants']['siren'] != None]) > 0:
+            if len([f"{el['nom_complet']} ({el['qualite']})" for el in data['representants'] if 'Commissaire aux comptes' in el['qualite'] and el['siren'] != None]) > 0:
                 statutory_auditors_principals = " ".join([f"{el['nom_complet']} ({el['siren']})" for el in data['representants'] if 'Commissaire aux comptes titulaire' in el['qualite']])
                 statutory_auditors_alternates = " ".join([f"{el['nom_complet']} ({el['siren']})" for el in data['representants'] if el['qualite'] == 'Commissaire aux comptes suppléant'])
             elif len([f"{el['nom_complet']} ({el['qualite']})" for el in data['representants'] if 'Commissaire aux comptes' in el['qualite']]) > 0:
