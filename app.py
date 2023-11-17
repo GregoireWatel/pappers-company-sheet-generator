@@ -192,7 +192,8 @@ if run:
 
         # Create term
         if data['duree_personne_morale'] != None and data['date_immatriculation_rcs'] != None:
-            term = (datetime.datetime.strptime(data['date_immatriculation_rcs'], '%Y-%m-%d') + datetime.timedelta(days=data['duree_personne_morale']*365)).strftime('%Y-%m-%d')
+            term_date = convert_fr_date_to_datetime(data['date_immatriculation_rcs'])
+            term = (term_date + datetime.timedelta(days=data['duree_personne_morale']*365)).strftime('%Y-%m-%d')
         else:
             term = 'Not specified ("date_immatriculation_rcs" or "duree_personne_morale" missing))'
 
