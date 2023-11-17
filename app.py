@@ -135,7 +135,11 @@ if run:
             'décembre': 'December',
             'decembre': 'December',
         }
-        
+        def convert_fr_date_to_datetime(date_str):
+    day, month = date_str.split()
+    month = FRENCH_MONTHS[month.lower()]
+    return datetime.datetime.strptime(f"{day} {month}", "%d %B")
+    
         def convert_fr_date_to_datetime(date_str):
             day, month = date_str.split()
             month = FRENCH_MONTHS[month.lower()]
